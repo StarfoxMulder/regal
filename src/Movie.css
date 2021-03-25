@@ -1,0 +1,9 @@
+.Movie {
+  max-width: 200px;
+  margin: 25px;
+}
+
+.MovieTitle {
+  color: white;
+  text-align: left;
+}

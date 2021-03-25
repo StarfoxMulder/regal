@@ -1,0 +1,17 @@
+.Body {
+  background-color: black;
+  padding-top: 15px;
+}
+
+#loadMore {
+  background-color: #f56600;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
