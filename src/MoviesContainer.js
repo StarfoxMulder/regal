@@ -17,17 +17,14 @@ class MoviesContainer extends Component {
     var movieArray = [];
 
     for (var i=0; i < data.MovieFeedEntries.length; i++ ){
-      var movieData = data.MovieFeedEntries[i].Movie.Media.find(
+      var movieUrl = data.MovieFeedEntries[i].Movie.Media.find(
         function(movie){
           return movie.SubType == "TV_SmallPosterImage"
         }
       )
-      if (!movieData.Title) {
-        movieData.Title = data.MovieFeedEntries[i].Movie.Title
-      }
       console.log(data.MovieFeedEntries[i].Movie.Media);
-      console.log(movieData);
-      movieArray.push(movieData);
+      console.log(movieUrl);
+      movieArray.push(movieUrl);
     }
 
     console.log(movieArray);
@@ -59,8 +56,17 @@ class MoviesContainer extends Component {
 
     return (
       <div className="MoviesContainer">
+<<<<<<< HEAD
         {displayingMovies}
         <button onClick={this.loadMore} id="loadMore">Load More</button>
+=======
+        <Movie title={data.MovieFeedEntries[0].Movie.Title} poster={data.MovieFeedEntries[0].Movie.Media[1].Url} />
+        
+        {this.state.movies.map((m)=> (
+          <Movie title={m.Title} poster={m.Url} />
+        ))}
+        
+>>>>>>> parent of 2feafc2... Making sure all changes were saved to match with the previous push description.
       </div>
     )
   }
@@ -70,7 +76,6 @@ export default MoviesContainer;
 
 //data.MovieFeedEntries[0].Movie.Media[1].Url
 //data.MovieFeedEntries[0].Movie.Title
-//<Movie title={data.MovieFeedEntries[0].Movie.Title} poster={data.MovieFeedEntries[0].Movie.Media[1].Url} />
 
 /* {data.MovieFeedEntries.map((m)=> (
   <Movie title={m.Movie.Title} poster={m.Movie.Media[1].Url} />
