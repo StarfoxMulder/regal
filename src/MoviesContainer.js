@@ -8,7 +8,7 @@ class MoviesContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { movies: [] }
+    this.state = { movies: [] };
     this.structureData = this.structureData.bind(this);
 
   }
@@ -29,18 +29,24 @@ class MoviesContainer extends Component {
 
     console.log(movieArray);
 
-    // this.setState({ movies: movieArray });
+    this.setState({ movies: movieArray });
+  }
+
+  componentDidMount() {
+    this.structureData();
   }
 
   render() {
     console.log(data);
-    let displayMovies = this.structureData();
 
     return (
       <div className="MoviesContainer">
         <Movie title={data.MovieFeedEntries[0].Movie.Title} poster={data.MovieFeedEntries[0].Movie.Media[1].Url} />
-
-        {displayMovies}
+        
+        {this.state.movies.map((m)=> (
+          <Movie title={m.Title} poster={m.Url} />
+        ))}
+        
       </div>
     )
   }
