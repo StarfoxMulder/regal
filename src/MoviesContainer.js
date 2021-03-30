@@ -17,14 +17,17 @@ class MoviesContainer extends Component {
     var movieArray = [];
 
     for (var i=0; i < data.MovieFeedEntries.length; i++ ){
-      var movieUrl = data.MovieFeedEntries[i].Movie.Media.find(
+      var movieData = data.MovieFeedEntries[i].Movie.Media.find(
         function(movie){
           return movie.SubType == "TV_SmallPosterImage"
         }
       )
+      if (!movieData.Title) {
+        movieData.Title = data.MovieFeedEntries[i].Movie.Title
+      }
       console.log(data.MovieFeedEntries[i].Movie.Media);
-      console.log(movieUrl);
-      movieArray.push(movieUrl);
+      console.log(movieData);
+      movieArray.push(movieData);
     }
 
     console.log(movieArray);
@@ -41,12 +44,11 @@ class MoviesContainer extends Component {
 
     return (
       <div className="MoviesContainer">
-        <Movie title={data.MovieFeedEntries[0].Movie.Title} poster={data.MovieFeedEntries[0].Movie.Media[1].Url} />
         
         {this.state.movies.map((m)=> (
-          <Movie title={m.Title} poster={m.Url} />
+          <Movie title={m.Title} poster={m.SecureUrl} />
         ))}
-        
+
       </div>
     )
   }
@@ -56,6 +58,7 @@ export default MoviesContainer;
 
 //data.MovieFeedEntries[0].Movie.Media[1].Url
 //data.MovieFeedEntries[0].Movie.Title
+//<Movie title={data.MovieFeedEntries[0].Movie.Title} poster={data.MovieFeedEntries[0].Movie.Media[1].Url} />
 
 /* {data.MovieFeedEntries.map((m)=> (
   <Movie title={m.Movie.Title} poster={m.Movie.Media[1].Url} />
