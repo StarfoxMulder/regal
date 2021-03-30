@@ -8,9 +8,9 @@ class MoviesContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { movies: [] };
+    this.state = { movies: [], displayNum:10 };
     this.structureData = this.structureData.bind(this);
-
+    this.loadMore = this.loadMore.bind(this);
   }
 
   structureData(){
@@ -39,16 +39,28 @@ class MoviesContainer extends Component {
     this.structureData();
   }
 
+  loadMore() {
+    console.log("loadMore clicked.  Event bound properly.");
+    var currentDisplayNum = this.state.displayNum;
+    var newDisplayNum = currentDisplayNum+5;
+    this.setState({displayNum: newDisplayNum});
+  }
+
   render() {
     console.log(data);
 
+    let displayingMovies = [];
+    for(var x = 0; x < this.state.displayNum; x++){
+      console.log(this.state.movies);
+      let m = this.state.movies[x];
+      console.log(m);
+      displayingMovies.push(<Movie title={m.Title} poster={m.SecureUrl} key={x}/>);
+    }
+
     return (
       <div className="MoviesContainer">
-        
-        {this.state.movies.map((m)=> (
-          <Movie title={m.Title} poster={m.SecureUrl} />
-        ))}
-
+        {displayingMovies}
+        <button onClick={this.loadMore} id="loadMore">Load More</button>
       </div>
     )
   }
@@ -63,3 +75,6 @@ export default MoviesContainer;
 /* {data.MovieFeedEntries.map((m)=> (
   <Movie title={m.Movie.Title} poster={m.Movie.Media[1].Url} />
 ))} */
+// this.state.movies.map((m, index)=> (
+//   <Movie title={m.Title} poster={m.SecureUrl} key={index} />
+// ))

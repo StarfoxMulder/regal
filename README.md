@@ -10,3 +10,7 @@ In your terminal, navigate to the directory where you have the app.  I suggest y
 
 I initilly went with mapping over the MovieFeedEntries array, but I noticed that within the Media array the SubType "TV_SmallPosterImage" is not in the same location for each object.
 There is likely a more efficient way of locating the "TV_SmallPosterImage" URL for each of the movie posters than my approach and I'm very interested in knowing what it is.  My approach of searching for the index of "TV_SmallPosterImage" and then using that position to find the Url value feels like it involves unnecessary steps into finding an associated key/value pair.
+
+In the Header.js and Header.css files you will see commented-out lines regarding a div using the logo as a background-image.  I was attempting to do what I thought this line from the instructions was asking for:
+"Logo in header should float 16px to the right of the start of a centered 1024px header section when screen is larger than 1024px wide."
+I'm not sure I understand what is being asked for and I'll come back to it at the end since it seems like overall functionality is desired above styling.
