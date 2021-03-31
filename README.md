@@ -2,6 +2,8 @@
 
 This app was built using create-react-app.  The decision to use React was made in light of our conversdation on 3/23/2021.
 
+A working version of the application can be viewed here: https://regal-3030.herokuapp.com/
+
 ## To start 
 
 In your terminal, navigate to the directory where you have the app.  I suggest you first type "npm install" to make sure all dependencies are up to date.  Once the update has finished, type the command "npm run start" to start the application on localhost:3000 and have it open in a browser window.
