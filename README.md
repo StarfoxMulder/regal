@@ -14,3 +14,5 @@ There is likely a more efficient way of locating the "TV_SmallPosterImage" URL f
 In the Header.js and Header.css files you will see commented-out lines regarding a div using the logo as a background-image.  I was attempting to do what I thought this line from the instructions was asking for:
 "Logo in header should float 16px to the right of the start of a centered 1024px header section when screen is larger than 1024px wide."
 I'm not sure I understand what is being asked for and I'll come back to it at the end since it seems like overall functionality is desired above styling.
+
+Glad I came back to that requirement after I finished the other functionality.  You were asking for the logo to be 16px off-center to the right when the viewport is wider than 1024px, correct?  Sorry if I'm still misinterpreting that line of instruction.
