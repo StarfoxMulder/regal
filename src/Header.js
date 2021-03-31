@@ -12,6 +12,7 @@ class Header extends Component {
     return (
       <div className="Header">
         <img src={logo} className="RegalLogo" alt="Regal Theaters logo" />
+        {/* <div style={{ backgroundImage: `url(${logo})` }} className="RegalLogo" alt="Regal Theaters logo"></div> */}
         <div className="OrangeBar"></div>
       </div>
     )

@@ -19,7 +19,7 @@ class MoviesContainer extends Component {
     for (var i=0; i < data.MovieFeedEntries.length; i++ ){
       var movieData = data.MovieFeedEntries[i].Movie.Media.find(
         function(movie){
-          return movie.SubType == "TV_SmallPosterImage"
+          return movie.SubType === "TV_SmallPosterImage"
         }
       )
       if (!movieData.Title) {
@@ -35,18 +35,32 @@ class MoviesContainer extends Component {
     this.setState({ movies: movieArray });
   }
 
+  hideDefault(){
+    if(this.state.movies.length > this.props.display){
+      for(var h=this.props.display; h < this.state.movies.length; h++){
+        
+      }
+    }
+  }
+
   componentDidMount() {
     this.structureData();
   }
 
   render() {
     console.log(data);
+    // We're going to slice the array of movies starting at the begining
+    // and ending at the limit set in the props.  Use that section of the full array be what renders
+    // I figured this would be a good way to plan for scalability of a larger dataset
+    // where we could also replace the starting index with a variable for pagination.
+    let displayMovies = this.state.movies.slice(0, this.props.display);
 
     return (
       <div className="MoviesContainer">
         
-        {this.state.movies.map((m)=> (
-          <Movie title={m.Title} poster={m.SecureUrl} />
+        {/* {this.state.movies.map((m, index)=> ( */}
+        {displayMovies.map((m, index)=> (
+          <Movie title={m.Title} poster={m.SecureUrl}  key={index+1}/>
         ))}
 
       </div>
