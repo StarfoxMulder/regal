@@ -36,7 +36,11 @@ class MoviesContainer extends Component {
   }
 
   hideDefault(){
-    
+    if(this.state.movies.length > this.props.display){
+      for(var h=this.props.display; h < this.state.movies.length; h++){
+        
+      }
+    }
   }
 
   componentDidMount() {
@@ -45,11 +49,17 @@ class MoviesContainer extends Component {
 
   render() {
     console.log(data);
+    // We're going to slice the array of movies starting at the begining
+    // and ending at the limit set in the props.  Use that section of the full array be what renders
+    // I figured this would be a good way to plan for scalability of a larger dataset
+    // where we could also replace the starting index with a variable for pagination.
+    let displayMovies = this.state.movies.slice(0, this.props.display);
 
     return (
       <div className="MoviesContainer">
         
-        {this.state.movies.map((m, index)=> (
+        {/* {this.state.movies.map((m, index)=> ( */}
+        {displayMovies.map((m, index)=> (
           <Movie title={m.Title} poster={m.SecureUrl}  key={index+1}/>
         ))}
 
